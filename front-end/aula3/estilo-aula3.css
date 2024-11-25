@@ -1,0 +1,26 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+#titulo {
+    text-align: center;
+    gap: 15px
+}
+.tabela-billboard {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    gap: 15px
+}
+.tabela-billboard thead {
+    background-color: rgb(239, 103, 19);
+    padding: 15px;
+    color:rgb(240, 227, 196) 
+
+}
+.tabela-billboard tbody {
+    background-color: rgb(245, 240, 235);
+    padding: 15px;
+    color:rgb(221, 155, 0)
+    }
+    

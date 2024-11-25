@@ -1,0 +1,53 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 20px
+   
+}
+
+
+.card  {
+    flex-grow: 1;
+    flex-shrink: 1;
+    background-color: aqua;
+    flex-basis: 0%;
+    align-items: center;
+    text-align: center;
+}
+
+.footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20vb;
+    background-color: brown;
+    color: beige;
+}
+
+.footer-item{
+    padding: 5px;
+
+}
+
+.footer-item esquerda{
+    text-align: left;
+
+}
+
+.footer-item central{
+    text-align: center;
+    flex-grow: 1;
+
+}
+
+.footer-item direita{
+    text-align: right;
+
+}

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo 3</title>
+</head>
+<body>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+    
+    body, html {
+            width: 100%;
+            height: 100%;
+        }
+
+        body{
+            display: flex;
+            flex-direction: column;
+        }
+
+        header, footer {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 15vh;
+            background-color: brown;
+            color: antiquewhite;
+        }
+
+        .container{
+            flex: 1;
+            display: flex;
+
+        }
+
+        .sidebar{
+            flex: 1;
+            background-color: #171010;
+        }
+
+        .principal{
+            flex: 3;
+            background-color: aqua;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        section h2{
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            
+        }
+
+        section p{
+            padding-left: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+     
+
+        </style>
+
+        <header class="cabecalho">
+               <nav class="navbar">
+        <a href="">Home </a>
+        <a href="">Seção 1 </a>
+        <a href="">Seção 2</a>
+        <a href="">Seção 3</a>
+    </nav>
+</header>
+<div class="container">
+<aside class="sidebar">
+    <ul>
+        <li><a href=""> LInks Relacionados</a></li>
+        <li><a href=""> LInks Relacionados</a></li>
+        <li><a href=""> LInks Relacionados</a></li>
+    </ul>   
+    </div>
+      
+<main class="principal"></main>
+<section> 
+    <h2> Seção 1</h2>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo magni ipsa eveniet nulla. Assumenda, totam commodi aliquid sunt deleniti autem impedit nihil quaerat quidem aut voluptatem dolores! Cupiditate, voluptatem odit?
+
+    <h2> Seção 2</h2>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo magni ipsa eveniet nulla. Assumenda, totam commodi aliquid sunt deleniti autem impedit nihil quaerat quidem aut voluptatem dolores! Cupiditate, voluptatem odit?
+
+</section>
+
+
+    
+    <footer>
+        <p>Contato</p>
+    </footer>
+
+
+</body>
+</html>

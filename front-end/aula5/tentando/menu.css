@@ -1,0 +1,35 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navbar{
+    width:  100%;
+    background-color: aquamarine;
+    padding: 10px;
+    align-items: center;
+    text-align: center;
+    
+}
+
+.menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style-type: none;
+    width: 100%;
+    
+}
+.menu li{
+    margin: 0;
+}
+
+.menu a{
+   text-decoration: none;
+   color:rgb(210, 30, 150);
+   font-size: 16px;
+   padding: 10%;
+   border: 2px;
+
+}
