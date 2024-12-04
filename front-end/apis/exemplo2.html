@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokédex</title>
+    <style>
+        #typesList {
+            margin-top: 20px;
+        }
+        .typeItem {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pokédex</h1>
+    <input type="text" id="pokemonName" placeholder="Digite ID do Pokémon">
+    <button id="searchButton">Buscar</button>
+    
+    <div id="pokemonInfo">
+        <h2 id="pokemonTitle"></h2>
+        <img id="pokemonImage" src="" alt="Imagem do Pokémon">
+        <p id="pokemonType"></p>
+        <p id="pokemonStats"></p>
+    </div>
+
+    <button id="TypesButton">Lista dos tipos de Pokémon</button>
+    <div id="typesList"></div>
+
+    <script>
+        // Armazenar detalhes de tipos para evitar múltiplos fetches
+        const typesCache = {};
+
+        // Função para buscar Pokémon
+        document.getElementById('searchButton').addEventListener('click', () => {
+            let pokemonName = document.getElementById('pokemonName').value.toLowerCase();
+            fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
+                .then(response => response.json())
+                .then(data => {
+                    // Manipulando o DOM para exibir as informações
+                    document.getElementById('pokemonTitle').textContent = data.name.toUpperCase();
+                    document.getElementById('pokemonImage').src = data.sprites.front_default;
+                    document.getElementById('pokemonType').textContent = `Tipo(s): ${data.types.map(type => type.type.name).join(', ')}`;
+                    
+                    // Exibindo as estatísticas
+                    let stats = data.stats.map(stat => `${stat.stat.name}: ${stat.base_stat}`).join(', ');
+                    document.getElementById('pokemonStats').textContent = `Estatísticas: ${stats}`;
+                })
+                .catch(error => {
+                    alert('Pokémon não encontrado!');
+                    console.error('Erro:', error);
+                });
+        });
+
+        // Função para buscar e exibir a lista de tipos de Pokémon
+        document.getElementById('TypesButton').addEventListener('click', () => {
+            const typesList = document.getElementById('typesList');
+            typesList.innerHTML = ''; // Limpar a lista existente antes de adicionar novas informações
+
+            fetch('https://pokeapi.co/api/v2/type')
+                .then(response => response.json())
+                .then(data => {
+                    data.results.forEach(type => {
+                        // Verificar se o tipo já foi carregado
+                        if (typesCache[type.name]) {
+                            displayTypeInfo(type.name, typesCache[type.name]);
+                        } else {
+                            // Buscar mais detalhes do tipo, se necessário
+                            fetch(type.url)
+                                .then(response => response.json())
+                                .then(typeData => {
+                                    typesCache[type.name] = typeData; // Armazenar no cache
+                                    displayTypeInfo(type.name, typeData);
+                                })
+                                .catch(error => {
+                                    console.error('Erro ao carregar o tipo:', error);
+                                });
+                        }
+                    });
+                })
+                .catch(error => {
+                    console.error('Erro ao carregar os tipos:', error);
+                });
+        });
+
+        // Função para exibir as informações de cada tipo
+        function displayTypeInfo(typeName, typeData) {
+            const typesList = document.getElementById('typesList');
+            const typeItem = document.createElement('div');
+            typeItem.classList.add('typeItem');
+
+            // Adicionar nome do tipo
+            typeItem.innerHTML = `<h3>${typeName.toUpperCase()}</h3>`;
+
+            // Verificar se existe descrição e exibir
+            const description = typeData.effect_entries.find(entry => entry.language.name === 'pt');
+            if (description) {
+                typeItem.innerHTML += `<p><strong>Descrição:</strong> ${description.short_effect}</p>`;
+            }
+
+            typesList.appendChild(typeItem);
+        }
+    </script>
+</body>
+</html>

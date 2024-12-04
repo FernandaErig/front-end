@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evento de Formulário</title>
+</head>
+<body>
+    <form id="meuFormulario">
+        <label for="nome">Nome Completo:</label>
+        <input type="text" id="nome" required>
+        <P></P>
+        <label for="E-mail">E-mail:</label>
+                <input type="text" id="E-mail" required>
+        <P></P>
+                <label for="Mensagem">Sua Mensagem:</label>
+        <input type="text" id="Mensagem" required>
+
+        <button type="submit">Enviar</button>
+    </form>
+    
+    <script>
+        let formulario = document.getElementById('meuFormulario');
+        formulario.addEventListener('submit', function(event) {
+        alert('Formulário enviado com sucesso!');
+        });
+    </script>
+</body>
+</html>

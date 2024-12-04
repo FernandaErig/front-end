@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conatador do Cliques</title>
+</head>
+<body>
+    <button id="botao">Quantos Cliques Você Está Dando? </button>
+    <p id="mensagem"></p>
+
+    <script>
+        let botao = document.getElementById('botao');
+        let mensagem = document.getElementById('mensagem');
+
+                botao.addEventListener('click', function() {
+            mensagem.innerHTML = 'Quantos Cliques Você Esta Dando';
+            mensagem.style.color = 'green';
+
+                });
+            let contador = "0";
+            const contagem = document.getElementById('mensagem');
+            botao.addEventListener('click', function() {
+            contador++;
+            contagem.textContent = "Quantos Cliques Você Deu" + contador
+
+        });
+    </script>
+</body>
+</html>
